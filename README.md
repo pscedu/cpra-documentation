@@ -20,8 +20,16 @@ flowchart TD
 ## Scenario Development
 
 ```mermaid
-flowchart TD
-
+flowchart LR
+    CORS["Continuously Operating\nReference Stations (CORS)"] -->|Primary Benchmarks| DS(Deep Subsidence)
+    NGS["CPRA/National\nGeodetic Survey (NGS)"] -->|Secondary Benchmarks| DS
+    CRMS["Coastwide Reference\nMonitoring System (CRMS)"] -->|RSET-MH| SS(Shallow Subsidence)
+    DS --> TS(Total Subsidence)
+    SS --> TS
+    CMIP["Coupled Model\nIntercomparison Project\n(CMIP)"] --> SLR(Sea Level Rise)
+    CMIP --> Precip(Precipitation)
+    CMIP --> Temp(Temperature)
+    ASOS["Surface Weather\nObservation Stations (ASOS)"] -->|Historic Temperatures| Temp
 ```
 
 ## Digital Elevation Model
