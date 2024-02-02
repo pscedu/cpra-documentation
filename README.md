@@ -26,12 +26,24 @@ flowchart LR
     CRMS["Coastwide Reference\nMonitoring System (CRMS)"] -->|RSET-MH| SS(Shallow Subsidence)
     DS --> TS(Total Subsidence)
     SS --> TS
+    TS --> ES("Environmental\nScenarios")
     MP2017["2017 Coastal Master Plan"] -->|Sea Level Rise Curves| SLR(Sea Level Rise)
     NOAA_SLR["Global and Regional\nSea Level Rise Scenarios\nfor the United States (NOAA)"] -->|Sea Level Rise Curves| SLR
     CMIP["Coupled Model\nIntercomparison Project\n(CMIP)"] -->|Sea Level Rise Curves| SLR
-    CMIP --> Precip(Precipitation)
-    CMIP --> Temp(Temperature)
+    SLR --> ES
+    CMIP -->|Temperature Projections| Temp(Temperature)
     ASOS["Surface Weather\nObservation Stations (ASOS)"] -->|Historic Temperatures| Temp
+    Temp --> ES
+    Temp --> PET(Evapotranspiration)
+    PET --> ES
+    CMIP -->|Precipitation Projections| Precip(Precipitation)
+    Precip --> ES
+    CMIP -->|Precipitation Projections| SW(Seasonal Wetness)
+    SW --> TH(Tributary\nHydrographs)
+    TH --> ES
+    USGS_Gages["USGS River Gages"] -->|Daily Flow| TH
+    ERDC["USACE Engineering\nResearch and Development\nCenter (ERDC)"] -->|Mississippi Daily Flow| TH
+    USGS_SS["USGS Suspended\nSediment Observations"] -->|Rating Curves| TH
 ```
 
 ## Digital Elevation Model
