@@ -44,6 +44,10 @@ flowchart LR
     USGS_Gages["USGS River Gages"] -->|Daily Flow| TH
     ERDC["USACE Engineering\nResearch and Development\nCenter (ERDC)"] -->|Mississippi Daily Flow| TH
     USGS_SS["USGS Suspended\nSediment Observations"] -->|Rating Curves| TH
+    CMIP -->|Precipitation Projections| DP(Daily Precipitation)
+    DP --> SI("Storm Intensity")
+    SStorm["Synthetic Storms"] --> SI
+    SI --> ES
 ```
 
 ## Digital Elevation Model
