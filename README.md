@@ -4,7 +4,7 @@
 
 ```mermaid
 flowchart TD
-    Scenarios[Scenario Development] -->|Environmental Scenario| ICM["Integratged Compartment \nModel (ICM)"]
+    Scenarios[Scenario Development] -->|Environmental Scenario| ICM["Integrated Compartment \nModel (ICM)"]
     Projects[Project Concepts] -->|Model Group| ICM
     PT[Planning Tool] --> Projects
     DEM["Digital Elevation Model (DEM)"] -->|Topography\nBathymetry| ICM
