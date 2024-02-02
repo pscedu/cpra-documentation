@@ -26,7 +26,9 @@ flowchart LR
     CRMS["Coastwide Reference\nMonitoring System (CRMS)"] -->|RSET-MH| SS(Shallow Subsidence)
     DS --> TS(Total Subsidence)
     SS --> TS
-    CMIP["Coupled Model\nIntercomparison Project\n(CMIP)"] --> SLR(Sea Level Rise)
+    MP2017["2017 Coastal Master Plan"] -->|Sea Level Rise Curves| SLR(Sea Level Rise)
+    NOAA_SLR["Global and Regional\nSea Level Rise Scenarios\nfor the United States (NOAA)"] -->|Sea Level Rise Curves| SLR
+    CMIP["Coupled Model\nIntercomparison Project\n(CMIP)"] -->|Sea Level Rise Curves| SLR
     CMIP --> Precip(Precipitation)
     CMIP --> Temp(Temperature)
     ASOS["Surface Weather\nObservation Stations (ASOS)"] -->|Historic Temperatures| Temp
