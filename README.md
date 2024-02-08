@@ -42,7 +42,7 @@ flowchart LR
     SW --> TH(Tributary\nHydrographs)
     TH --> ES
     USGS_Gages["USGS River Gages"] -->|Daily Flow| TH
-    CMIP --> ERDC["USACE Engineering\nResearch and Development\nCenter (ERDC)"] -->|Mississippi Daily Flow| TH
+    CMIP -->|Precipitation Projections| ERDC["USACE Engineering\nResearch and Development\nCenter (ERDC)"] -->|Mississippi Daily Flow| TH
     USGS_SS["USGS Suspended\nSediment Observations"] -->|Rating Curves| TH
     CMIP -->|Precipitation Projections| DP(Daily Precipitation)
     DP --> SI("Storm Intensity")
