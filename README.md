@@ -99,9 +99,21 @@ flowchart TD
     BT --> M
 ```
 
-_Data Source: [Attachment C8](https://coastal.la.gov/wp-content/uploads/2024/02/C8_ICM-LAVegModICM-Morph_v2.pdf)_
+_Data Source: [Attachment C8][C8]_
 
-### ICM-LaVegMod
+### ICM-LAVegMod
+
+```mermaid
+flowchart TD
+    M[ICM-Morph] -->|Land Change| WA(Water Area)
+    WA --> VC(Vegetation Coverages)
+    H[ICM-Hydro] -->|Average Annual Salinity\nWater Level Variation| VC
+    VC --> SS(Acute Salinity Stress)
+    H -->|2-Week Salinity| SS
+    SS --> FFIBS(FFIBS Score)
+```
+
+_Data Source: [Attachment C8][C8]_
 
 ### ICM-Morph
 
@@ -112,3 +124,5 @@ _Data Source: [Attachment C8](https://coastal.la.gov/wp-content/uploads/2024/02/
 ## Coastal Louisiana Risk Assessment (CLARA)
 
 ## Planning Tool
+
+[C8]: https://coastal.la.gov/wp-content/uploads/2024/02/C8_ICM-LAVegModICM-Morph_v2.pdf
