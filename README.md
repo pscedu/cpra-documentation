@@ -86,6 +86,27 @@ flowchart LR
 
 ## Integrated Compartment Model (ICM)
 
+```mermaid
+flowchart TD
+    M[ICM-Morph] -->|Land\nAvailable Bareground| VM[ICM-LaVegMod]
+    VM -->|Organic Matter Accumulation| M
+    H[ICM-Hydro] -->|Mineral Accumulation| M
+    H -->|Average Annual Salinity\nWater Level Variation| VM
+    H -->|Water Depth| In(Inundation)
+    M -->|Elevation| In
+    In --> BT(Bareground Transitions)
+    VM --> BT
+    BT --> M
+```
+
+_Data Source: [Attachment C8](https://coastal.la.gov/wp-content/uploads/2024/02/C8_ICM-LAVegModICM-Morph_v2.pdf)_
+
+### ICM-LaVegMod
+
+### ICM-Morph
+
+### ICM-Hydro
+
 ## Advanced Circulation + Simulating Waves Nearshore (ADCIRC+SWAN)
 
 ## Coastal Louisiana Risk Assessment (CLARA)
