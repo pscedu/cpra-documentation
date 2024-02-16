@@ -50,7 +50,22 @@ flowchart LR
     SI --> ES
 ```
 
-## Digital Elevation Model
+## Landscape Composition
+
+```mermaid
+flowchart TD
+    S2["Sentinel-2"] -->|2018 Imagery| CE(Cloud Exclusion)
+    CE --> IC(Index Calculation)
+    IC --> |mNDWI\nNDVI\nAnnual Composite| AV(Aquatic Vegetation)
+    CRMS["Coastwide Reference\nMonitoring System (CRMS)"] -->|2015/2016 Land/Water Classifications| ED(Endmember Development)
+    IC -->|mNDWI| ED
+    CCAP["Coastal Change\nAnalysis Program (C-CAP)"] -->|2015-2017 Beta-Level Data| ED
+    AV --> FLWE(Fractional Land/Water Estimation)
+    ED --> FLWE
+    FLWE -->|Land\nWater\nFloating Aquatic Vegetation\nSubmerged Aquatic Vegetation| ICM["Integrated Compartment\nModel (ICM)"]
+```
+
+## Digital Elevation Model (DEM)
 
 ## Integrated Compartment Model (ICM)
 
