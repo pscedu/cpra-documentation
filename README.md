@@ -78,6 +78,10 @@ flowchart LR
     LPBF["Lake Pontchartrain\nBasin Foundation (LPBF)"] --> RT
     TNRIS[Texas Natural Resources\nInformation System] --> RT
     RT --> BD(Breakline\nDevelopment)
+    BD --> DSP(Data Source\nPrioritization)
+    DSP --> FG(Filling Gaps in\nBathymetry)
+    MP17DEM[2017 Coastal\nMaster Plan\nBaseline DEM] --> FG
+    FG --> TBDEM("NGOM2\nTBDEM")
 ```
 
 ## Integrated Compartment Model (ICM)
