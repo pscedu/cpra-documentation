@@ -67,6 +67,19 @@ flowchart TD
 
 ## Digital Elevation Model (DEM)
 
+```mermaid
+flowchart LR
+    3DEP["USGS 3D Elevation\nProgram (3DEP)"] --> RT(Reprojection\nand Transformation)
+    NOAA --> RT
+    USACE["U.S. Army Corps\nof Engineers (USACE)"] --> RT
+    USDA_NRCS["USDA Natural Resources\nConservation Service (NRCS)"] --> RT
+    CPRA --> RT
+    LADOT["Louisiana Department of\nTransportation (LA DOT)"] --> RT
+    LPBF["Lake Pontchartrain\nBasin Foundation (LPBF)"] --> RT
+    TNRIS[Texas Natural Resources\nInformation System] --> RT
+    RT --> BD(Breakline\nDevelopment)
+```
+
 ## Integrated Compartment Model (ICM)
 
 ## Advanced Circulation + Simulating Waves Nearshore (ADCIRC+SWAN)
