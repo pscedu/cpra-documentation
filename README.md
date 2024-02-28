@@ -117,6 +117,55 @@ _Data Source: [Attachment C8][C8]_
 
 ### ICM-Morph
 
+```mermaid
+flowchart LR
+    P(Polders) --> ?
+    SD[Scenario\nDevelopment] -->|Deep Subsidence\nShallow Subsidence| ?
+    NC[Maintained\nNavigation\nChannels\nand Rivers] --> ?
+    DZ(Active Deltaic Zones) --> ?
+
+    DEM["NGOM2 TBDEM"] -->|Elevation| ID(Inundation Depths)
+    H[ICM-Hydro] -->|Mineral Accumulation| MD
+    LC[Landscape\nComposition] -->|Land Type| ED(Marsh Edge Delineation)
+    ID --> IHSI(Calculate\nInundation\nfor use in\nHSI Equations)
+    ID --> NSL(Classify New\nSubaerial Land)
+    ID -->|Monthly Inundation Depths\nWetted Area| MD(Mineral Sediment\nDeposition)
+    CRMS["Coastwide\nReference\nMonitoring \nSystem (CRMS)"] -->|OMAR| OA(Organic Matter\nAccumulation)
+    VM[ICM-LaVegMod] -->|Weighted FFIBS Score| OA
+    VM -->|Flotant Mortality\nFlotant Establishment| F(Flotant Marsh Loss)
+    ED -->|Marsh Edges| EE(Marsh Edge Erosion)
+    HEE[Historical Edge\nErosion Rates] --> EE
+    HEE[Historical Edge\nErosion Rates] --> BSP(Implement Shoreline\nProtection Projects)
+    VM -->|Bareground| MB(Map Spatial\nDistribution of\nBareground)
+    DEM["NGOM2 TBDEM"] -->|Elevation| MB
+    CRMS -->|Annual Mean Depth-Salinity| IT(Chronic Inundation\nStress Thresholds)
+    VM -->|Weighted FFIBS Score| IT
+    MD --> UE(Update Elevation)
+    OA --> UE
+    F --> UE
+    EE --> UE
+    MB --> UE
+    UE --> NSL
+    NSL --> UL(Update Land\nType Classification)
+    EE --> UL
+    F --> UL
+    IT --> UL
+    UL --> BMP(Implement\nMarsh Creation\nand Landbridge\nProjects)
+    PT -->|Design Elevation| BMP
+    PT[Planning Tool] -->|Erosion Multipliers| BSP
+    BMP --> BRP(Implement Ridge\nRestoration\nand Levee\n Projects)
+
+    DTL(Distance to Land) --> ??
+    SAV(Submerged\nAquatic\nVegetation) --> ??
+
+    classDef fixme fill:red,color:black,stroke:black,font-weight:bold
+    class ?,?? fixme
+```
+
+_Data Source: [Attachment C8][C8]_
+
+ICM-Morph includes a preprocessing subroutine that reads data into memory. It is omitted from the diagram for readability.
+
 ### ICM-Hydro
 
 ## Advanced Circulation + Simulating Waves Nearshore (ADCIRC+SWAN)
