@@ -17,7 +17,7 @@ flowchart TD
     click Scenarios "#scenario-development"
 ```
 
-## Scenario Development
+## <i class="fa fa-clipboard-list"></i> Scenario Development
 
 ```mermaid
 flowchart LR
@@ -84,7 +84,7 @@ flowchart LR
     FG --> TBDEM("NGOM2\nTBDEM")
 ```
 
-## Integrated Compartment Model (ICM)
+## <i class="fa fa-table-cells"></i> Integrated Compartment Model (ICM)
 
 ```mermaid
 flowchart TD
@@ -99,9 +99,9 @@ flowchart TD
     BT --> M
 ```
 
-_Data Source: [Attachment C8][C8]_
+_Data Source: [2023 Master Plan Attachment C8][C8]_
 
-### ICM-LAVegMod
+### <i class="fa fa-leaf"></i> ICM-LAVegMod
 
 ```mermaid
 flowchart TD
@@ -115,7 +115,7 @@ flowchart TD
 
 _Data Source: [Attachment C8][C8]_
 
-### ICM-Morph
+### <i class="fa fa-mountain-sun"></i> ICM-Morph
 
 ```mermaid
 flowchart LR
@@ -162,11 +162,36 @@ flowchart LR
     class ?,?? fixme
 ```
 
-_Data Source: [Attachment C8][C8]_
+_Data Source: [2023 Master Plan Attachment C8][C8]_
 
 ICM-Morph includes a preprocessing subroutine that reads data into memory. It is omitted from the diagram for readability.
 
-### ICM-Hydro
+### <i class="fa fa-droplet"></i> ICM-Hydro
+```mermaid
+flowchart TD
+    %%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
+    AT("fa:fa-clipboard-list Air Temperature") --> WT("fa:fa-download Water Temperature")
+    TH("fa:fa-clipboard-list Tributary Hydrographs") --> WT
+    TH --> Sal("fa:fa-download Salinity")
+    TH --> SS(Suspended Sediments)
+    PE("fa:fa-clipboard-list Precipitation and\nEvapotranspiration") --> Sal
+    PE --> EWL("fa:fa-download Estuary Water Level")
+    SS --> Sed("fa:fa-download Sedimentation")
+    Sal --> SS
+    TD(Tidal Dynamics) --> Sed
+    EWL --> Sed
+    TD --> BR(Bed Resuspension)
+    SI("fa:fa-clipboard-list Storm Intensity") --> Win
+    Win(Wind) --> Wav
+    Wav(Waves) --> BR
+    BR --> SS
+    TD --> EWL
+    EWL --> MEE(Marsh Edge Erosion)
+    MEE --> SS
+    SLR("fa:fa-clipboard-list Sea Level Rise") --> EWL
+```
+
+_Data Source: [2017 Coastal Master Plan Attachment C3-22][C3-22]_
 
 ## Advanced Circulation + Simulating Waves Nearshore (ADCIRC+SWAN)
 
@@ -175,3 +200,10 @@ ICM-Morph includes a preprocessing subroutine that reads data into memory. It is
 ## Planning Tool
 
 [C8]: https://coastal.la.gov/wp-content/uploads/2024/02/C8_ICM-LAVegModICM-Morph_v2.pdf
+
+[C3-22]: http://coastal.la.gov/wp-content/uploads/2017/04/Attachment-C3-22_FINAL_03.07.2017.pdf
+
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  rel="stylesheet"
+/>
