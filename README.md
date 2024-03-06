@@ -224,9 +224,13 @@ flowchart LR
     DEL --> EASD(📤 Expected Annual\nStructural Damage)
 ```
 
+_Data Source: [2023 Master Plan Attachment C11][C11]_
+
 ## 💻 Planning Tool
 
 [C8]: https://coastal.la.gov/wp-content/uploads/2024/02/C8_ICM-LAVegModICM-Morph_v2.pdf
+
+[C11]: https://coastal.la.gov/wp-content/uploads/2023/08/C11_2023RiskModel_Jan2023_v3.pdf
 
 [C3-22]: http://coastal.la.gov/wp-content/uploads/2017/04/Attachment-C3-22_FINAL_03.07.2017.pdf
 
