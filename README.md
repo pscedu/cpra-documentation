@@ -46,7 +46,7 @@ flowchart LR
 
 _Data Source: [2023 Master Plan Appendix B][B]_
 
-## 🌏 Landscape Composition
+## 🌎 Landscape Composition
 
 ```mermaid
 flowchart TD
@@ -132,7 +132,7 @@ flowchart LR
     SAV(Submerged\nAquatic\nVegetation) --> ?
     
     E(📐 Elevation) --> ID(Inundation Depths)
-    LT(🌏 Land Type) --> ED(Marsh Edges)
+    LT(🌎 Land Type) --> ED(Marsh Edges)
     ID --> IHSI(Calculate\nInundation\nfor use in\nHSI Equations)
     ID --> NSL(Classify New\nSubaerial Land)
     ID --> MD(Mineral Sediment\nDeposition)
@@ -197,6 +197,19 @@ flowchart TD
 
 _Data Source: [2017 Coastal Master Plan Attachment C3-22][C3-22]_
 
+### ⛳ ICM-BI (Barrier Islands Digital Elevation Model)
+```mermaid
+flowchart TD
+    LS(📋 Subsidence) --> PA(Profile Adjustment)
+    SLR(📋 Sea Level Rise) --> PA
+    CSR(Cross-Shore Retreat) --> PA
+    MER(Marsh Edge Retreat) --> PA
+    PA --> RAN(Restoration as Needed)
+    RAN --> DEM(📤 Updated DEM)
+```
+
+_Data Source: [2023 Master Plan Appendix C][C]_
+
 ## 🌀 Advanced Circulation + Simulating Waves Nearshore (ADCIRC+SWAN)
 
 ## 💵 Coastal Louisiana Risk Assessment (CLARA)
@@ -237,6 +250,8 @@ _Data Source: [2023 Master Plan Attachment C11][C11]_
 [B]: https://coastal.la.gov/wp-content/uploads/2023/09/B_ScenarioDevelopmentFutureConditions_Jan2023_v3.pdf
 
 [B1]: https://coastal.la.gov/wp-content/uploads/2023/07/B1_LandscapeInputData_Jul2023_v5.pdf
+
+[C]: https://coastal.la.gov/wp-content/uploads/2023/05/C_UsePredictiveModels_Jan2023_v3.pdf
 
 [C8]: https://coastal.la.gov/wp-content/uploads/2024/02/C8_ICM-LAVegModICM-Morph_v2.pdf
 
