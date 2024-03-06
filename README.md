@@ -5,15 +5,16 @@
 ```mermaid
 flowchart TD
     Scenarios[📋 Scenario Development] -->|Environmental Scenario| ICM["📦 Integrated Compartment \nModel (ICM)"]
-    Projects[Project Concepts] -->|Model Group| ICM
-    PT[Planning Tool] --> Projects
+    Projects(Project Concepts) -->|Model Group| ICM
+    PT[💻 Planning Tool] --> Projects
     DEM["📐 Digital Elevation Model (DEM)"] -->|Topography\nBathymetry| ICM
-    ICM -->|Land Cover\nVegetation| ADCIRC_SWAN["Advanced Circulation +\nSimulating Waves Nearshore\n(ADCIRC+SWAN)"]
+    ICM -->|Land Cover\nVegetation| ADCIRC_SWAN["🌀 Advanced Circulation +\nSimulating Waves Nearshore\n(ADCIRC+SWAN)"]
     DEM -->|Topography\nBathymetry| ADCIRC_SWAN
-    ICM -->|Land Cover\nVegetation| CLARA["Coastal Louisiana Risk\nAssessment (CLARA)"]
+    ICM -->|Land Cover\nVegetation| CLARA["💵 Coastal Louisiana Risk\nAssessment (CLARA)"]
     ADCIRC_SWAN -->|Peak Water Level\nPeak Wave Height\nPeak Wave Period| CLARA
     ICM -->|Land Cover\nVegetation| PT
     CLARA -->|Flood Depth\nDamage| PT
+
     click Scenarios "#scenario-development"
 ```
 
@@ -24,30 +25,23 @@ flowchart LR
     CORS["Continuously Operating\nReference Stations (CORS)"] -->|Primary Benchmarks| DS(Deep Subsidence)
     NGS["CPRA/National\nGeodetic Survey (NGS)"] -->|Secondary Benchmarks| DS
     CRMS["Coastwide Reference\nMonitoring System (CRMS)"] -->|RSET-MH| SS(Shallow Subsidence)
-    DS --> TS(Total Subsidence)
+    DS --> TS(📤 Total Subsidence)
     SS --> TS
-    TS --> ES("Environmental\nScenarios")
-    MP2017["2017 Coastal Master Plan"] -->|Sea Level Rise Curves| SLR(Sea Level Rise)
+    MP2017["2017 Coastal Master Plan"] -->|Sea Level Rise Curves| SLR(📤 Sea Level Rise)
     NOAA_SLR["Global and Regional\nSea Level Rise Scenarios\nfor the United States (NOAA)"] -->|Sea Level Rise Curves| SLR
     CMIP["Coupled Model\nIntercomparison Project\n(CMIP)"] -->|Sea Level Rise Curves| SLR
-    SLR --> ES
     CMIP -->|Temperature Projections| Temp(Temperature)
     ASOS["Surface Weather\nObservation Stations (ASOS)"] -->|Historic Temperatures| Temp
-    Temp --> ES
-    Temp --> PET(Evapotranspiration)
-    PET --> ES
-    CMIP -->|Precipitation Projections| Precip(Precipitation)
-    Precip --> ES
+    Temp --> PET(📤 Evapotranspiration)
+    CMIP -->|Precipitation Projections| Precip(📤 Precipitation)
     CMIP -->|Precipitation Projections| SW(Seasonal Wetness)
-    SW --> TH(Tributary\nHydrographs)
-    TH --> ES
+    SW --> TH(📤 Tributary\nHydrographs)
     USGS_Gages["USGS River Gages"] -->|Daily Flow| TH
     CMIP -->|Precipitation Projections| ERDC["USACE Engineering\nResearch and Development\nCenter (ERDC)"] -->|Mississippi Daily Flow| TH
     USGS_SS["USGS Suspended\nSediment Observations"] -->|Rating Curves| TH
     CMIP -->|Precipitation Projections| DP(Daily Precipitation)
-    DP --> SI("Storm Intensity")
-    SStorm["Synthetic Storms"] --> SI
-    SI --> ES
+    DP --> SI(📤 Storm Intensity)
+    SStorm[Synthetic Storms] --> SI
 ```
 
 ## 🌏 Landscape Composition
@@ -62,7 +56,10 @@ flowchart TD
     CCAP["Coastal Change\nAnalysis Program (C-CAP)"] -->|2015-2017 Beta-Level Data| ED
     AV --> FLWE(Fractional Land/Water Estimation)
     ED --> FLWE
-    FLWE -->|Land\nWater\nFloating Aquatic Vegetation\nSubmerged Aquatic Vegetation| ICM["Integrated Compartment\nModel (ICM)"]
+    FLWE -->L(📤 Land)
+    FLWE --> W(📤 Water)
+    FLWE --> FAV(📤 Floating Aquatic Vegetation)
+    FLWE --> SAV(📤 Submerged Aquatic Vegetation)
 ```
 
 ## 📐 Digital Elevation Model (DEM)
