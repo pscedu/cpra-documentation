@@ -44,6 +44,8 @@ flowchart LR
     SStorm[Synthetic Storms] --> SI
 ```
 
+_Data Source: [2023 Master Plan Appendix B][B]_
+
 ## 🌏 Landscape Composition
 
 ```mermaid
@@ -61,6 +63,8 @@ flowchart TD
     FLWE --> FAV(📤 Floating Aquatic Vegetation)
     FLWE --> SAV(📤 Submerged Aquatic Vegetation)
 ```
+
+_Data Source: [2023 Master Plan Attachment B1][B1]_
 
 ## 📐 Digital Elevation Model (DEM)
 
@@ -80,6 +84,8 @@ flowchart LR
     MP17DEM[2017 Coastal\nMaster Plan\nBaseline DEM] --> FG
     FG --> E(📤 Elevation)
 ```
+
+_Data Source: [2023 Master Plan Attachment B1][B1]_
 
 ## 📦 Integrated Compartment Model (ICM)
 
@@ -228,49 +234,12 @@ _Data Source: [2023 Master Plan Attachment C11][C11]_
 
 ## 💻 Planning Tool
 
+[B]: https://coastal.la.gov/wp-content/uploads/2023/09/B_ScenarioDevelopmentFutureConditions_Jan2023_v3.pdf
+
+[B1]: https://coastal.la.gov/wp-content/uploads/2023/07/B1_LandscapeInputData_Jul2023_v5.pdf
+
 [C8]: https://coastal.la.gov/wp-content/uploads/2024/02/C8_ICM-LAVegModICM-Morph_v2.pdf
 
 [C11]: https://coastal.la.gov/wp-content/uploads/2023/08/C11_2023RiskModel_Jan2023_v3.pdf
 
 [C3-22]: http://coastal.la.gov/wp-content/uploads/2017/04/Attachment-C3-22_FINAL_03.07.2017.pdf
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
