@@ -4,10 +4,10 @@
 
 ```mermaid
 flowchart TD
-    Scenarios[Scenario Development] -->|Environmental Scenario| ICM["Integrated Compartment \nModel (ICM)"]
+    Scenarios[📋 Scenario Development] -->|Environmental Scenario| ICM["📦 Integrated Compartment \nModel (ICM)"]
     Projects[Project Concepts] -->|Model Group| ICM
     PT[Planning Tool] --> Projects
-    DEM["Digital Elevation Model (DEM)"] -->|Topography\nBathymetry| ICM
+    DEM["📐 Digital Elevation Model (DEM)"] -->|Topography\nBathymetry| ICM
     ICM -->|Land Cover\nVegetation| ADCIRC_SWAN["Advanced Circulation +\nSimulating Waves Nearshore\n(ADCIRC+SWAN)"]
     DEM -->|Topography\nBathymetry| ADCIRC_SWAN
     ICM -->|Land Cover\nVegetation| CLARA["Coastal Louisiana Risk\nAssessment (CLARA)"]
@@ -81,16 +81,16 @@ flowchart LR
     BD --> DSP(Data Source\nPrioritization)
     DSP --> FG(Filling Gaps in\nBathymetry)
     MP17DEM[2017 Coastal\nMaster Plan\nBaseline DEM] --> FG
-    FG --> TBDEM("NGOM2\nTBDEM")
+    FG --> E(📤 Elevation)
 ```
 
 ## 📦 Integrated Compartment Model (ICM)
 
 ```mermaid
 flowchart TD
-    M[ICM-Morph] -->|Land\nAvailable Bareground| VM[ICM-LaVegMod]
+    M[🌄 ICM-Morph] -->|Land\nAvailable Bareground| VM[🌱 ICM-LaVegMod]
     VM -->|Organic Matter Accumulation| M
-    H[ICM-Hydro] -->|Mineral Accumulation| M
+    H[💧 ICM-Hydro] -->|Mineral Accumulation| M
     H -->|Average Annual Salinity\nWater Level Variation| VM
     H -->|Water Depth| In(Inundation)
     M -->|Elevation| In
@@ -105,12 +105,13 @@ _Data Source: [2023 Master Plan Attachment C8][C8]_
 
 ```mermaid
 flowchart TD
-    M[ICM-Morph] -->|Land Change| WA(Water Area)
+    LC(🌄 Land Change) --> WA(Water Area)
     WA --> VC(Vegetation Coverages)
-    H[ICM-Hydro] -->|Average Annual Salinity\nWater Level Variation| VC
+    AASal(💧 Average Annual Salinity) --> VC
+    WLV(💧 Water Level Variation) --> VC
     VC --> SS(Acute Salinity Stress)
-    H -->|2-Week Salinity| SS
-    SS --> FFIBS(FFIBS Score)
+    2WkSal(💧 2-Week Salinity) --> SS
+    SS --> FFIBS(📤 FFIBS Score)
 ```
 
 _Data Source: [Attachment C8][C8]_
@@ -120,26 +121,30 @@ _Data Source: [Attachment C8][C8]_
 ```mermaid
 flowchart LR
     P(Polders) --> ?
-    SD[Scenario\nDevelopment] -->|Deep Subsidence\nShallow Subsidence| ?
+    DS(📋 Deep Subsidence) --> ?
+    SS(📋 Shallow Subsidence) --> ?
     NC[Maintained\nNavigation\nChannels\nand Rivers] --> ?
     DZ(Active Deltaic Zones) --> ?
-
-    DEM["NGOM2 TBDEM"] -->|Elevation| ID(Inundation Depths)
-    H[ICM-Hydro] -->|Mineral Accumulation| MD
-    LC[Landscape\nComposition] -->|Land Type| ED(Marsh Edge Delineation)
+    DTL(Distance to Land) --> ?
+    SAV(Submerged\nAquatic\nVegetation) --> ?
+    
+    E(📐 Elevation) --> ID(Inundation Depths)
+    LT(🌏 Land Type) --> ED(Marsh Edges)
     ID --> IHSI(Calculate\nInundation\nfor use in\nHSI Equations)
     ID --> NSL(Classify New\nSubaerial Land)
-    ID -->|Monthly Inundation Depths\nWetted Area| MD(Mineral Sediment\nDeposition)
-    CRMS["Coastwide\nReference\nMonitoring \nSystem (CRMS)"] -->|OMAR| OA(Organic Matter\nAccumulation)
-    VM[ICM-LaVegMod] -->|Weighted FFIBS Score| OA
-    VM -->|Flotant Mortality\nFlotant Establishment| F(Flotant Marsh Loss)
-    ED -->|Marsh Edges| EE(Marsh Edge Erosion)
+    ID --> MD(Mineral Sediment\nDeposition)
+    MA(💧 Mineral Accumulation) --> MD
+    OMAR("Organic Matter\nAccumulation Rates\n(CRMS)") --> OA(Organic Matter\nAccumulation)
+    WFS(🌱 Weighted FFIBS Score) --> OA
+    BG(🌱 Bareground) --> MB(Map Spatial\nDistribution of\nBareground)
+    E --> MB
+    FM(🌱 Flotant Mortality) --> F(Flotant Marsh Loss)
+    FE(🌱 Flotant Establishment) --> F
+    ED --> EE(Marsh Edge Erosion)
     HEE[Historical Edge\nErosion Rates] --> EE
     HEE[Historical Edge\nErosion Rates] --> BSP(Implement Shoreline\nProtection Projects)
-    VM -->|Bareground| MB(Map Spatial\nDistribution of\nBareground)
-    DEM["NGOM2 TBDEM"] -->|Elevation| MB
-    CRMS -->|Annual Mean Depth-Salinity| IT(Chronic Inundation\nStress Thresholds)
-    VM -->|Weighted FFIBS Score| IT
+    AMDS("Annual Mean\nDepth-Salinity\n(CRMS)") --> IT(Chronic Inundation\nStress Thresholds)
+    WFS --> IT
     MD --> UE(Update Elevation)
     OA --> UE
     F --> UE
@@ -151,15 +156,12 @@ flowchart LR
     F --> UL
     IT --> UL
     UL --> BMP(Implement\nMarsh Creation\nand Landbridge\nProjects)
-    PT -->|Design Elevation| BMP
-    PT[Planning Tool] -->|Erosion Multipliers| BSP
+    DE(💻 Design Elevation) --> BMP
+    EM(💻 Erosion Multipliers) --> BSP
     BMP --> BRP(Implement Ridge\nRestoration\nand Levee\n Projects)
 
-    DTL(Distance to Land) --> ??
-    SAV(Submerged\nAquatic\nVegetation) --> ??
-
     classDef fixme fill:red,color:black,stroke:black,font-weight:bold
-    class ?,?? fixme
+    class ? fixme
 ```
 
 _Data Source: [2023 Master Plan Attachment C8][C8]_
@@ -169,25 +171,25 @@ ICM-Morph includes a preprocessing subroutine that reads data into memory. It is
 ### 💧 ICM-Hydro
 ```mermaid
 flowchart TD
-    AT("📋 Air Temperature") --> WT("📤 Water Temperature")
-    TH("📋 Tributary Hydrographs") --> WT
-    TH --> Sal("📤 Salinity")
+    AT(📋 Air Temperature) --> WT(📤 Water Temperature)
+    TH(📋 Tributary Hydrographs) --> WT
+    TH --> Sal(📤 Salinity)
     TH --> SS(Suspended Sediments)
-    PE("📋 Precipitation and\nEvapotranspiration") --> Sal
-    PE --> EWL("📤 Estuary Water Level")
-    SS --> Sed("📤 Sedimentation")
+    PE(📋 Precipitation and\nEvapotranspiration) --> Sal
+    PE --> EWL(📤 Estuary Water Level)
+    SS --> Sed(📤 Sedimentation)
     Sal --> SS
     TD(Tidal Dynamics) --> Sed
     EWL --> Sed
     TD --> BR(Bed Resuspension)
-    SI("📋 Storm Intensity") --> Win
+    SI(📋 Storm Intensity) --> Win
     Win(Wind) --> Wav
     Wav(Waves) --> BR
     BR --> SS
     TD --> EWL
     EWL --> MEE(Marsh Edge Erosion)
     MEE --> SS
-    SLR("📋 Sea Level Rise") --> EWL
+    SLR(📋 Sea Level Rise) --> EWL
 ```
 
 _Data Source: [2017 Coastal Master Plan Attachment C3-22][C3-22]_
