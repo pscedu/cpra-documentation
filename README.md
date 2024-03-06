@@ -169,7 +169,6 @@ ICM-Morph includes a preprocessing subroutine that reads data into memory. It is
 ### 💧 ICM-Hydro
 ```mermaid
 flowchart TD
-    %%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
     AT("📋 Air Temperature") --> WT("📤 Water Temperature")
     TH("📋 Tributary Hydrographs") --> WT
     TH --> Sal("📤 Salinity")
@@ -197,8 +196,78 @@ _Data Source: [2017 Coastal Master Plan Attachment C3-22][C3-22]_
 
 ## 💵 Coastal Louisiana Risk Assessment (CLARA)
 
+```mermaid
+flowchart LR
+    SH(🌀 Surge Hydrograph) --> OT(Overtopping)
+    WH(🌀 Wave Height) --> OT
+    E(📐 Elevation) --> OT
+    P("Polders (USACE)") --> OT
+    SH --> SF(System Fragility)
+    WH --> SF
+    P --> SF
+    P --> ID(Interior Drainage)
+    OT --> FD(Flood Depth)
+    SF --> FD
+    ID --> FD
+    R("Rainfall (IPETF)") --> FD
+    Pu(Pumping) --> FD
+    FD --> AEP(Annual\nExceedance\nProbability)
+    BF("Building Footprints\n(Microsoft)") --> AI(Asset Inventory)
+    BA("Building Attributes\n(Google Street View)") --> AI
+    NSI("National Structure\nInventory v2\n(USACE)") --> AI
+    ADS(ATTOM Data Solutions) --> AI
+    OSM(OpenStreetMap) --> AI
+    AI --> AV(Asset Valuation)
+    AV --> DEL(Direct\nEconomic\nLosses)
+    FD --> DEL
+    AEP --> DEL
+    DEL --> EADD(📤 Expected Annual\nDamage, Dollars)
+    DEL --> EASD(📤 Expected Annual\nStructural Damage)
+```
+
 ## 💻 Planning Tool
 
 [C8]: https://coastal.la.gov/wp-content/uploads/2024/02/C8_ICM-LAVegModICM-Morph_v2.pdf
 
 [C3-22]: http://coastal.la.gov/wp-content/uploads/2017/04/Attachment-C3-22_FINAL_03.07.2017.pdf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
