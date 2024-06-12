@@ -1,0 +1,11 @@
+.markdown-body {
+    font-size: 12px;
+}
+.markdown-body pre code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+svg,
+svg * {
+    line-height: 1.1 !important;
+}
