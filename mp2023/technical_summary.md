@@ -27,7 +27,7 @@ flowchart LR
     end
     subgraph DS[Databases]
         P[(PostgreSQL)]
-        S[(SQlite)]
+        S[(SQLite)]
     end
     subgraph WS[Web Server]
         N([Nginx])
@@ -65,7 +65,7 @@ flowchart LR
         HCJ[HTML\nCSS\nJavaScript]
         CSV[CSV]
         N([Nginx])
-        Nom([Nominataim])
+        Nom([Nominatim])
         MBTS([MBTileServer])
         
     end
