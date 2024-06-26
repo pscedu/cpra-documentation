@@ -298,6 +298,14 @@ df3 = read_data(
 )
 ```
 
+#### Data Archival and Replacement
+
+In addition to the main data directory that contains active data, there is a second, parallel directory that follows the same dimension hierarchy and is used for archival. The archive directory is used to preserve Parquet and COG files that have been replaced with new versions due to errors. During the replacement process, files are moved to the corresponding location in the archive directory, and a new file is written in the original location. A log record is also added to the MPD that includes the old and new file paths, the date and time, and the reason for replacement.
+
+The archival and replacement process is meant to be used when errors are discovered in a published dataset. It is not intended to handle changes to input data and model parameters. In these cases, a new model group number should be assigned.
+
+Data for exploratory model groups may be removed from the data directory without archival once these model groups are no longer needed. In such cases, a removal record is added to the MPD indicating the model group, the date and time, and the reason for removal.
+
 ## Data and Analysis API
 
 The data and analysis API provides a RESTful interface for accessing and transforming model data stored in Parquet and COG files. Data from Parquet files can be returned in several tabular formats. Data from COGs can be returned as GeoTIFFs or raster map tiles. COG data can also be summarized geographic unit (e.g., hydro compartment or ecoregion) and returned in any of the formats used for the tabular data.
