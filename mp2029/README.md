@@ -19,6 +19,7 @@
          * [Non-Partition Dimensions](technical_requirements.md#non-partition-dimensions)
          * [File Paths](technical_requirements.md#file-paths)
          * [Reading and Writing Data](technical_requirements.md#reading-and-writing-data)
+         * [Data Archival and Replacement](technical_requirements.md#data-archival-and-replacement)
    * [Data and Analysis API](technical_requirements.md#data-and-analysis-api)
       * [Query Operations](technical_requirements.md#query-operations)
          * [Filter](technical_requirements.md#filter)
