@@ -2,6 +2,7 @@
 // Requires pdfcrop (Fedora package: texlive-pdfcrop)
 
 import fs from "fs/promises";
+import process from "process";
 import { mdToPdf }  from "md-to-pdf";
 import { run } from "@mermaid-js/mermaid-cli";
 
@@ -46,5 +47,4 @@ async function convertFile(inFile, outFile) {
   await fs.writeFile(outFile, pdf.content);
 }
 
-await convertFile("MP2029.md", "pdf/mp2029-technical-requirements.pdf");
-await convertFile("MP2029_IMPLEMENTATION.md", "pdf/mp2029-implementation-plan.pdf");
+await convertFile(process.argv[2], process.argv[3]);
