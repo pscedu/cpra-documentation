@@ -673,7 +673,7 @@ GET /management/v1/clickup/oauth
 
 ##### Set ClickUp OAuth Code
 
-This request updates a user in the management API
+This request sets the oauth code for a user
 
 ```
 POST /management/v1/clickup/oauth
