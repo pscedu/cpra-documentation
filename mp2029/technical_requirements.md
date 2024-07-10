@@ -460,3 +460,243 @@ In addition to the issue and comment features described above, such an integrati
 - API access to perform create, read, update, and delete (CRUD) operations on issues and comments
 
 If a suitable external project management system cannot be found, the issue, comment, and dashboard functionality could be built directly into the portal. However, this work would divert development effort from other priorities and would limit the ability to customize the resulting QA/QC system.
+
+## Management API
+
+The management API provides a RESTful interface for the data portal to interact with the project management system described above, read and write information related to the status of a particular Simulation Run, and provide authentication/authorization support for the other APIs.
+
+The management API will be responsible for issuing requests to the project management system using either the App level user information, or the regular user information.
+
+### Examples
+
+#### Simulation Runs
+
+##### Create a simulation run
+
+This request would create a simulation run
+
+```
+POST /management/v1/simulation_runs
+
+{
+    "status": "to do",
+    "model_group": "500",
+    "scenario": "7"
+}
+```
+                                                       
+##### Get all simulation runs
+
+This request returns all simulation runs.
+
+```
+GET /management/v1/simulation_runs
+```
+
+##### Get all simulation runs in model group 500
+
+This request returns all simulation runs that are in model group 500.
+
+```
+GET /management/v1/simulation_runs?model_group=500
+```
+
+##### Get simulation_run by id
+
+This request returns a simulation run based on its internal ID
+
+```
+GET /management/v1/simulation_runs/1000
+```
+
+##### Update a simulation run
+
+This request would update a simulation run's information (status)
+
+```
+PUT /management/v1/simulation_runs/1000
+
+{
+    "status": "complete"
+}
+```
+
+#### QA/QC
+
+##### Get all tasks by simulation_run_id
+
+This request would return all of the tasks associated with a simulation run
+
+```
+GET /management/v1/simulation_runs/1000/tasks
+```
+
+##### Get all tasks by simulation_run_id that are a progress tracking task
+
+This request would return all of the tasks associated with a simulation run that are also progress tracking tasks
+
+```
+GET /management/v1/simulation_runs/1000/tasks?tags=progress_tracking_task
+```
+
+##### Get all tasks by simulation_run_id that are bugs
+
+This request would return all of the tasks associated with a simulation run that are also bugs
+
+```
+GET /management/v1/simulation_runs/1000/tasks?tags=bug
+```
+
+##### Create task
+
+This request would create a task, associated with a particular simulation run
+
+```
+POST /management/v1/simulation_runs/1000/tasks
+
+{
+    "tags": ["bug"],
+    "name": "Critical Error with Salinity",
+    "assignees": [1000, 1001]
+}
+```
+
+##### Get all comments for a task
+
+This request would return all task-level comments for a particular task
+
+```
+GET /management/v1/simulation_runs/1000/tasks/1001/comments
+```
+
+##### Get all replies for a comment
+
+This request would return all of the replies to a comment
+
+```
+GET /management/v1/simulation_runs/1000/tasks/1001/comments/1002/replies
+```
+
+##### Create comment
+
+This request would create a comment for a task
+
+```
+POST /management/v1/simulation_runs/1000/tasks/1001/comments
+
+{
+    "comment_text": "Hello world",
+    "assignees": [1000]
+    "notify_all": true 
+}
+
+```
+
+##### Create reply
+
+This request would create a comment for a task
+
+```
+POST /management/v1/simulation_runs/1000/tasks/1001/comments/1002/replies
+
+{
+    "comment_text": "Hello world",
+    "assignees": [1000]
+    "notify_all": true 
+}
+```
+
+#### User Auth(orization/entication)
+ 
+##### Register new user
+
+This request registers a new user in the management API
+
+```
+POST /management/v1/users
+
+{
+    "username": "foobar",
+    "first_name": "foo",
+    "last_name": "bar,
+    "password": "password",
+    "email": "foo@bar.com",
+    "role": "readonly_user"
+}
+```
+
+
+##### Update user information
+
+This request updates a user in the management API
+
+```
+PUT /management/v1/users
+
+{
+    "role": "admin"
+}
+```
+
+##### Get JSON Web Token
+
+This request updates a user in the management API
+
+```
+POST /management/v1/tokens
+
+{
+    "username": "foobar",
+    "password": "password"
+}
+```
+
+##### Renew JSON Web Token
+
+This request updates a user in the management API
+
+```
+POST /management/v1/tokens/refresh
+
+{
+    "refresh": "abc"
+}
+```
+
+##### Get ClickUp OAuth URL
+
+This request gets an OAuth URL to kick off the OAuth routine.
+
+```
+GET /management/v1/clickup/oauth
+```
+
+##### Set ClickUp OAuth Code
+
+This request updates a user in the management API
+
+```
+POST /management/v1/clickup/oauth
+
+{
+    "username": "foobar",
+    "code": "xyz"
+}
+```
+
+##### Get ClickUp users
+
+This request returns all users that can be assigned in ClickUp
+
+```
+GET /management/v1/clickup/users
+```
+
+##### Get ClickUp teams
+
+This request returns all teams that can be assigned in ClickUp
+
+```
+GET /management/v1/clickup/teams
+```
+
