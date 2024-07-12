@@ -525,6 +525,7 @@ PUT /management/v1/simulation_runs/1000
 
 ##### Get all tasks by simulation_run_id
 
+(TODO: Modify based on simulation/model run decision) 
 This request would return all the tasks associated with a simulation run
 
 ```
@@ -533,6 +534,7 @@ GET /management/v1/simulation_runs/1000/tasks
 
 ##### Get all tasks by simulation_run_id that are a progress tracking task
 
+(TODO: Modify based on simulation/model run decision) 
 This request would return all the tasks associated with a simulation run that are also progress tracking tasks
 
 ```
@@ -541,6 +543,7 @@ GET /management/v1/simulation_runs/1000/tasks?tags=progress_tracking_task
 
 ##### Get all tasks by simulation_run_id that are bugs
 
+(TODO: Modify based on simulation/model run decision) 
 This request would return all the tasks associated with a simulation run that are also bugs
 
 ```
@@ -549,6 +552,7 @@ GET /management/v1/simulation_runs/1000/tasks?tags=bug
 
 ##### Create task
 
+(TODO: Modify based on simulation/model run decision) 
 This request would create a task, associated with a particular simulation run
 
 ```
@@ -558,6 +562,19 @@ POST /management/v1/simulation_runs/1000/tasks
     "tags": ["bug"],
     "name": "Critical Error with Salinity",
     "assignees": [1000, 1001]
+}
+```
+
+##### Update task
+
+(TODO: Modify based on simulation/model run decision) 
+This request would update a task
+
+```
+POST /management/v1/simulation_runs/1000/tasks/1001
+
+{
+    "name": "New name",
 }
 ```
 
@@ -604,6 +621,18 @@ POST /management/v1/tasks/1001/comments
     "assignees": [1000]
     "notifyAll": true,
     "parentCommentId": 1002
+}
+```
+
+##### Update comment (or reply)
+
+This request would update a comment (or reply)
+
+```
+POST /management/v1/tasks/1001/comments/1002
+
+{
+    "commentText": "New comment text",
 }
 ```
 
