@@ -480,7 +480,7 @@ POST /management/v1/simulation_runs
 
 {
     "status": "to do",
-    "model_group": "500",
+    "modelGroup": "500",
     "scenario": "7"
 }
 ```
@@ -525,7 +525,7 @@ PUT /management/v1/simulation_runs/1000
 
 ##### Get all tasks by simulation_run_id
 
-This request would return all of the tasks associated with a simulation run
+This request would return all the tasks associated with a simulation run
 
 ```
 GET /management/v1/simulation_runs/1000/tasks
@@ -533,7 +533,7 @@ GET /management/v1/simulation_runs/1000/tasks
 
 ##### Get all tasks by simulation_run_id that are a progress tracking task
 
-This request would return all of the tasks associated with a simulation run that are also progress tracking tasks
+This request would return all the tasks associated with a simulation run that are also progress tracking tasks
 
 ```
 GET /management/v1/simulation_runs/1000/tasks?tags=progress_tracking_task
@@ -541,7 +541,7 @@ GET /management/v1/simulation_runs/1000/tasks?tags=progress_tracking_task
 
 ##### Get all tasks by simulation_run_id that are bugs
 
-This request would return all of the tasks associated with a simulation run that are also bugs
+This request would return all the tasks associated with a simulation run that are also bugs
 
 ```
 GET /management/v1/simulation_runs/1000/tasks?tags=bug
@@ -566,15 +566,15 @@ POST /management/v1/simulation_runs/1000/tasks
 This request would return all task-level comments for a particular task
 
 ```
-GET /management/v1/simulation_runs/1000/tasks/1001/comments
+GET /management/v1/tasks/1001/comments
 ```
 
 ##### Get all replies for a comment
 
-This request would return all of the replies to a comment
+This request would return all the replies to a comment
 
 ```
-GET /management/v1/simulation_runs/1000/tasks/1001/comments/1002/replies
+GET /management/v1/tasks/1001/comments/1002/replies
 ```
 
 ##### Create comment
@@ -582,50 +582,33 @@ GET /management/v1/simulation_runs/1000/tasks/1001/comments/1002/replies
 This request would create a comment for a task
 
 ```
-POST /management/v1/simulation_runs/1000/tasks/1001/comments
+POST /management/v1/tasks/1001/comments
 
 {
-    "comment_text": "Hello world",
+    "commentText": "Hello world",
     "assignees": [1000]
-    "notify_all": true 
+    "notifyAll": true 
 }
 
 ```
 
 ##### Create reply
 
-This request would create a comment for a task
+This request would create a reply to a comment
 
 ```
-POST /management/v1/simulation_runs/1000/tasks/1001/comments/1002/replies
+POST /management/v1/tasks/1001/comments
 
 {
-    "comment_text": "Hello world",
+    "commentText": "Hello world",
     "assignees": [1000]
-    "notify_all": true 
+    "notifyAll": true,
+    "parentCommentId": 1002
 }
 ```
 
 #### User Auth(orization/entication)
  
-##### Register new user
-
-This request registers a new user in the management API
-
-```
-POST /management/v1/users
-
-{
-    "username": "foobar",
-    "first_name": "foo",
-    "last_name": "bar,
-    "password": "password",
-    "email": "foo@bar.com",
-    "role": "readonly_user"
-}
-```
-
-
 ##### Update user information
 
 This request updates a user in the management API
@@ -640,7 +623,8 @@ PUT /management/v1/users
 
 ##### Get JSON Web Token
 
-This request updates a user in the management API
+This request updates a user in the management API. This will be used to log users into the Management API.
+These credentials should be their PSC username & password. If the user cannot be found in the Management API's database, their user record will be created.
 
 ```
 POST /management/v1/tokens
@@ -653,7 +637,7 @@ POST /management/v1/tokens
 
 ##### Renew JSON Web Token
 
-This request updates a user in the management API
+This request generates a renewed JSON Web Token.
 
 ```
 POST /management/v1/tokens/refresh
@@ -684,12 +668,12 @@ POST /management/v1/clickup/oauth
 }
 ```
 
-##### Get ClickUp users
+##### Get Users
 
-This request returns all users that can be assigned in ClickUp
+This request returns all users in the PSC system
 
 ```
-GET /management/v1/clickup/users
+GET /management/v1/users
 ```
 
 ##### Get ClickUp teams
