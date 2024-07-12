@@ -637,6 +637,14 @@ POST /management/v1/tasks/1001/comments/1002
 ```
 
 #### User Auth(orization/entication)
+
+##### Get Users
+
+This request returns all users in the PSC system
+
+```
+GET /management/v1/users
+```
  
 ##### Update user information
 
@@ -695,14 +703,6 @@ POST /management/v1/clickup/oauth
     "username": "foobar",
     "code": "xyz"
 }
-```
-
-##### Get Users
-
-This request returns all users in the PSC system
-
-```
-GET /management/v1/users
 ```
 
 ##### Get ClickUp teams
