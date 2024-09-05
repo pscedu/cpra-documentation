@@ -11,12 +11,12 @@ The implementation plan lays out the path toward an integrated master plan softw
 | 1 | Develop and administer a data analysis and visualization software survey. | ✅ Complete |
 | 2 | Facilitate discussion about software needs at an in-person planning workshop. | ✅ Complete |
 | 3 | Test technologies and formats for model data storage. | ✅ Complete |
-| 4 | Test quality assurance software and approaches. | 🔶 In Progress |
-| 5 | Develop a technical requirements document for 2029 plan software. | 🔶 In Progress |
-| 6 | Develop a multi-year implementation plan for 2029 plan software. | 🔶 In Progress |
+| 4 | Test quality assurance software and approaches. | ✅ Complete |
+| 5 | Develop a technical requirements document for 2029 plan software. | ✅ Complete |
+| 6 | Develop a multi-year implementation plan for 2029 plan software. | ✅ Complete |
 | 7 | Develop a Python library for reading and writing model data. | 🔶 In Progress |
-| 8 | Convert model data from the 2023 MPDAP to the new data formats. | ⭕ Not Started |
-| 9 | Develop a data and analysis API to read and summarize model data. | ⭕ Not Started |
+| 8 | Convert model data from the 2023 MPDAP to the new data formats. | 🔶 In Progress |
+| 9 | Develop a data and analysis API to read and summarize model data. | 🔶 In Progress |
 
 ### 2025
 
