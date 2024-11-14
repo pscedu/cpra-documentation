@@ -503,9 +503,10 @@ PUT /management/v1/users
 
 This request updates a user in the management API. This will be used to log users into the Management API.
 These credentials should be their PSC username & password. If the user cannot be found in the Management API's database, their user record will be created.
+CAUTION: These need to be passed a form-data, not as JSON.
 
 ```
-POST /management/v1/tokens
+POST /management/v1/tokens/
 
 {
     "username": "foobar",
@@ -518,10 +519,10 @@ POST /management/v1/tokens
 This request generates a renewed JSON Web Token.
 
 ```
-POST /management/v1/tokens/refresh
+POST /management/v1/tokens/refresh/
 
 {
-    "refresh": "abc"
+    "refresh_token": "abc"
 }
 ```
 
