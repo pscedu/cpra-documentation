@@ -527,10 +527,17 @@ POST /management/v1/tokens/refresh
 
 ##### Get ClickUp OAuth URL
 
+Description of Proposed OAuth routine:
+User logs in to get JWT Token -> User goes to connect with ClickUp -> Start OAuth routine (GET /management/v1/clickup/oauth/) -> Redirect users to clickup_oauth_url -> User authorizes in ClickUp -> ClickUp redirects to front-end -> Front-end grabs the "code" in the query params -> Front end sends "code" to Management API (POST /management/v1/clickup/oauth/)
+
 This request gets an OAuth URL to kick off the OAuth routine.
 
 ```
-GET /management/v1/clickup/oauth
+GET /management/v1/clickup/oauth/
+
+{
+    "clickup_oauth_url": "https://clickup.com"
+}
 ```
 
 ##### Set ClickUp OAuth Code
@@ -538,11 +545,10 @@ GET /management/v1/clickup/oauth
 This request sets the oauth code for a user
 
 ```
-POST /management/v1/clickup/oauth
+POST /management/v1/clickup/oauth/
 
 {
-    "username": "foobar",
-    "code": "xyz"
+    "oauth_code": "xyz"
 }
 ```
 
