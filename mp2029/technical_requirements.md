@@ -499,18 +499,23 @@ PUT /management/v1/users
 }
 ```
 
+##### Get OIDC Redirect
+
+This request gets the URL to redirect users to log in through the OIDC provider (CILogon). Front-end should redirect user to this URL.
+
+```
+GET /management/v1/tokens/
+```
+
 ##### Get JSON Web Token
 
-This request updates a user in the management API. This will be used to log users into the Management API.
-These credentials should be their PSC username & password. If the user cannot be found in the Management API's database, their user record will be created.
-CAUTION: These need to be passed a form-data, not as JSON.
+This request exchanges the OIDC code for a Management API JSON webtoken. This wil be used to log users into the Management API.
 
 ```
 POST /management/v1/tokens/
 
 {
-    "username": "foobar",
-    "password": "password"
+    "oauth_code": "xyz"
 }
 ```
 
