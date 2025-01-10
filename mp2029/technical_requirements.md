@@ -540,6 +540,7 @@ This request gets an OAuth URL to kick off the OAuth routine.
 
 ```
 GET /management/v1/clickup/oauth/
+Authorization: Bearer {json_web_token}
 
 {
     "clickup_oauth_url": "https://clickup.com"
@@ -552,6 +553,7 @@ This request sets the oauth code for a user
 
 ```
 POST /management/v1/clickup/oauth/
+Authorization: Bearer {json_web_token}
 
 {
     "oauth_code": "xyz"
