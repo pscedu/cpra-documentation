@@ -1,7 +1,7 @@
 {
     "themeVariables": {
-        "clusterBkg": "rgba(255, 255, 255, 0.25)",
-        "lineColor": "white",
-        "titleColor": "white"
+        "clusterBkg": "rgba(0, 0, 0, 0.25)",
+        "lineColor": "black",
+        "titleColor": "black"
     }
 }
