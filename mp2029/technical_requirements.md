@@ -107,6 +107,27 @@ While most analysis and quality assurance tasks can be performed using the porta
 
 In the 2023 master plan, model data were stored on the HPC filesystem. Attributes for vector model grids were stored as CSVs, and raster outputs were stored in a variety of image formats, including binary dumps, ASCII gridded XYZ files, and GeoTIFFs. Some of the attribute data from the CSVs were later imported into the project development database (PDD) and exposed via a time series API for use in the Data Access Portal (DAP). Some of the raster outputs were converted to Cloud Optimized GeoTIFFs (COGs) and map tiles (MBTiles) for download and display, respectively, in the DAP.
 
+```mermaid
+%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
+flowchart LR
+    Models --> CSV("`💾 CSVs
+        (Vector Attributes)`")
+    Models --> FBA("`💾 Fortran Arrays
+        (Raster)`")
+    CSV --> Pg(💾 PostgreSQL)
+    Pg --> API[API]
+    API --> Portal["`Online
+        Portal`"]
+    FBA --> XYZ("`💾 ASCII
+        Gridded XYZ`")
+    XYZ --> TIFF(💾 GeoTIFF)
+    TIFF --> MBT(💾 MBTiles)
+    TIFF --> Portal
+    MBT --> TS["`Tile
+        Server`"]
+    TS --> Portal
+```
+
 **2023 Model Data Storage Summary**
 
 | Model Grid Type | Model Output Format | Intermediate Formats | Download and Display Formats |
@@ -141,25 +162,26 @@ To address the limitations in the 2023 model data storage system, we [evaluated 
 Based on the test results, we recommend implementing a modified version of the hybrid database-cloud storage option using COGs and Parquet files in the wide format. Using `zstd` compression at level 6 for both the COG and Parquet files—as well as a row group size of 5,000 for the Parquet files—optimizes file size and query performance in most cases. The main drawback of this option is that accessing the Parquet files via the database is slow due to the use of Python to read and transpose the Parquet files in real time.
 
 ```mermaid
-flowchart TD
-    VM(Vector Grid Models)
-    RM(Raster Grid Models)
-    subgraph MPD[Master Plan Database]
-        ODBR(Out-DB Rasters)
-        PL3P(PL/Python)
-    end
-    subgraph FS[HPC Filesystem]
-        COG(💾 Cloud-Optimized GeoTIFFs)
-        P(💾 Parquet)
-    end
-    CAPI(Catalog API)
-    DAPI(Data and Analysis API)
-    RM --> COG
-    COG --> ODBR
-    VM --> P
-    FS --> CAPI
-    FS --> DAPI
-    P --> PL3P
+%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
+flowchart LR
+    M[Models]
+    M --> COG("`💾 Cloud-Optimized
+        GeoTIFFs (Raster)`")
+    M --> P("`💾 Parquet
+        (Vector Attributes)`")
+    COG --> API
+    P --> API
+    API --> MT(Map Tiles)
+    API --> SS("`Summary
+        Statistics`")
+    API --> TD("`Tabular
+        Data`")
+    API --> GT(GeoTIFF)
+    MT --> Portal["`Online
+        Portal`"]
+    SS --> Portal
+    TD --> Portal
+    GT --> Portal
 ```
 
 #### Data Structure
